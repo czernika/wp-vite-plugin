@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "module": "ES2020",
+        "moduleResolution": "node",
+		"jsx": "preserve",
+        "paths": {
+            "@js/*": [
+                "./web/app/themes/wolat/resources/js/*"
+            ]
+        },
+        "types": ["vite/client"],
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
