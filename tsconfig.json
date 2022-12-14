@@ -1,9 +1,12 @@
 {
     "compilerOptions": {
         "module": "CommonJS",
-        "moduleResolution": "node",
-		"jsx": "preserve",
-        "outDir": "dist",
+        "declaration": false,
+        "target": "es2017",
+        "sourceMap": false,
+        "outDir": "./dist",
+        "baseUrl": "./",
+        "skipLibCheck": true,
         "paths": {
             "@src/*": [
                 "./src/*"
