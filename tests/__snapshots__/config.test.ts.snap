@@ -1,0 +1,15 @@
+// Vitest Snapshot v1
+
+exports[`asserts configs were merged 1`] = `
+{
+  "build": {
+    "rollupOptions": {
+      "input": "resources/app/js",
+      "output": {
+        "chunkFileNames": "js/chunks/[name].[hash].js",
+        "entryFileNames": "js/[name].[hash].js",
+      },
+    },
+  },
+}
+`;

@@ -29,6 +29,18 @@ test.each([
             some: '/path/to/web/app/themes/wolat/resources/js/app.js',
         }
     },
+    {
+        config: {
+            input: 'resources/js/app.js'
+        },
+        input: '/path/to/web/app/themes/wolat/resources/js/app.js',
+    },
+    {
+        config: {
+            input: ['resources/js/app.js']
+        },
+        input: ['/path/to/web/app/themes/wolat/resources/js/app.js'],
+    },
 ])('it asserts provided input resolved correctly into rollup input', ({config, input}) => {
     expect(resolveInput(config)).toStrictEqual(input)
 })
