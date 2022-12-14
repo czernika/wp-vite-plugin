@@ -1,3 +1,3 @@
-const getThemePath = (): string => 'web/app/themes/wolat/'
+const getThemePath = (): string => 'web/app/themes/wolat'
 
 export default getThemePath

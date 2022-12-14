@@ -8,7 +8,7 @@
                 "./web/app/themes/wolat/resources/js/*"
             ]
         },
-        "types": ["vite/client"],
+        "types": ["vite/client", "vitest"],
     },
     "exclude": [
         "node_modules"

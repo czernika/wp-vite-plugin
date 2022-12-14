@@ -33,7 +33,7 @@ const resolveInput = (config: Config): Input => {
      * @example
      * wolat({input: {app: 'resources/js/app.js'}})
      */
-    if (typeof config === 'object') {
+    if (typeof config === 'object' && !Array.isArray(config)) {
         const configInput = (config as ConfigInterface).input
         Object.keys(configInput).forEach(key => {
             input[key] = mapInput(configInput[key])
