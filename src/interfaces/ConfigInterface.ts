@@ -16,9 +16,9 @@ export default interface ConfigInterface {
 
     /**
      * Manifest file name
-     * @default true
+     * @default 'manifest.json'
      */
-    manifest?: string | true
+    manifest?: string
 
     /**
      * Output directory

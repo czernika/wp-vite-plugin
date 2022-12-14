@@ -1,5 +1,5 @@
 import { test, expect, vi } from 'vitest'
-import resolveInput from '../src/resolveInput'
+import Resolver from '../src/resolver'
 
 vi.mock('path', () => {
     return {
@@ -42,5 +42,6 @@ test.each([
         input: ['/path/to/web/app/themes/wolat/resources/js/app.js'],
     },
 ])('it asserts provided input resolved correctly into rollup input', ({config, input}) => {
-    expect(resolveInput(config)).toStrictEqual(input)
+    const resolver = new Resolver(config)
+    expect(resolver.getInput()).toStrictEqual(input)
 })

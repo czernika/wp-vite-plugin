@@ -33,6 +33,7 @@ module.exports = {
         'semi': [
             'error',
             'never'
-        ]
+        ],
+        '@typescript-eslint/ban-ts-comment': 'off'
     }
 }

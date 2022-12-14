@@ -3,13 +3,22 @@
 exports[`asserts configs were merged 1`] = `
 {
   "build": {
+    "emptyOutDir": true,
+    "manifest": "manifest.json",
+    "outDir": "web/app/themes/wolat/dist",
     "rollupOptions": {
       "input": "resources/app/js",
       "output": {
+        "assetFileNames": [Function],
         "chunkFileNames": "js/chunks/[name].[hash].js",
         "entryFileNames": "js/[name].[hash].js",
       },
     },
+  },
+  "root": "web/app/themes/wolat",
+  "server": {
+    "port": 5173,
+    "strictPort": true,
   },
 }
 `;

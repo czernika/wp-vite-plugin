@@ -1,10 +1,6 @@
 import { it, expect, vi, test } from 'vitest'
 import { UserConfig } from 'vite'
-import resolveConfig from '../src/resolveConfig'
-import resolveInput from '../src/resolveInput'
-import { resolveOutDir } from '../src/resolveOutput'
-import resolveThemeRoot from '../src/resolveThemeRoot'
-import resolveManifestFile from '../src/resolveManifestFile'
+import Resolver from '../src/resolver'
 
 vi.mock('path', () => {
     return {
@@ -12,6 +8,7 @@ vi.mock('path', () => {
     }
 })
 
+// TODO refactor this test case
 it('asserts configs were merged', () => {
     const pluginConfig: UserConfig = {
         build: {
@@ -35,16 +32,17 @@ it('asserts configs were merged', () => {
         }
     }
 
-    const resolved = resolveConfig(pluginConfig, userConfig)
+    const resolved = new Resolver(pluginConfig).getResolvedConfig(userConfig)
 
     expect(resolved).toMatchSnapshot()
 })
 
 it('asserts config resolves output directory', () => {
-    expect(resolveInput({
+    const resolver = new Resolver({
         input: 'resources/js/app.js',
         theme: 'wp-content/themes/test'
-    })).toMatchObject('/path/to/wp-content/themes/test/resources/js/app.js')
+    })
+    expect(resolver.getInput()).toMatchObject('/path/to/wp-content/themes/test/resources/js/app.js')
 })
 
 test.each([
@@ -78,7 +76,8 @@ test.each([
         outDir: 'wp-content/themes/my-theme/public'
     },
 ])('it asserts provided input resolved correctly output directory', ({config, outDir}) => {
-    expect(resolveOutDir(config)).toStrictEqual(outDir)
+    const resolver = new Resolver(config)
+    expect(resolver.getOutputDir()).toStrictEqual(outDir)
 })
 
 test.each([
@@ -104,23 +103,24 @@ test.each([
         root: 'wp-content/themes/my-theme'
     },
 ])('it asserts provided input resolved correctly root', ({config, root}) => {
-    expect(resolveThemeRoot(config)).toStrictEqual(root)
+    const resolver = new Resolver(config)
+    expect(resolver.getThemePath()).toStrictEqual(root)
 })
 
 test.each([
     {
         config: 'resources/js/app.js',
-        manifest: true
+        manifest: 'manifest.json'
     },
     {
         config: ['resources/js/app.js'],
-        manifest: true
+        manifest: 'manifest.json'
     },
     {
         config: {
             input: 'resources/js/app.js'
         },
-        manifest: true
+        manifest: 'manifest.json'
     },
     {
         config: {
@@ -130,5 +130,6 @@ test.each([
         manifest: 'assets.json'
     },
 ])('it asserts provided input resolved correctly manifest input', ({config, manifest}) => {
-    expect(resolveManifestFile(config)).toStrictEqual(manifest)
+    const resolver = new Resolver(config)
+    expect(resolver.getManifestFileName()).toStrictEqual(manifest)
 })
