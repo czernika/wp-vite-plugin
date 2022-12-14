@@ -1,9 +1,8 @@
 import { EmittedAsset, OutputOptions } from 'rollup'
-import ConfigInterface from '../interfaces/ConfigInterface'
-import Config from '../types/Config'
-import configIsObject from './helpers/configIsObject'
-import getConfigValue from './helpers/getConfigValueOrDefault'
-import resolveThemeRoot from './resolveThemeRoot'
+import ConfigInterface from '@src/interfaces/ConfigInterface'
+import Config from '@src/types/Config'
+import configIsObject from '@src/helpers/configIsObject'
+import resolveThemeRoot from '@src/resolveThemeRoot'
 
 const output = {
     assetFileNames: (assetInfo: EmittedAsset): string => {

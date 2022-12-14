@@ -1,16 +1,17 @@
 {
     "compilerOptions": {
-        "module": "ES2020",
+        "module": "CommonJS",
         "moduleResolution": "node",
 		"jsx": "preserve",
+        "outDir": "dist",
         "paths": {
-            "@js/*": [
-                "./web/app/themes/wolat/resources/js/*"
+            "@src/*": [
+                "./src/*"
             ]
         },
-        "types": ["vite/client", "vitest"],
     },
+    "include": ["src/**/*"],
     "exclude": [
-        "node_modules"
+        "node_modules", "tests"
     ]
 }

@@ -1,10 +1,10 @@
 import { Plugin, UserConfig } from 'vite'
-import type Config from './types/Config'
-import resolveInput from './src/resolveInput'
-import output, { resolveOutDir } from './src/resolveOutput'
-import resolveConfig from './src/resolveConfig'
-import resolveThemeRoot from './src/resolveThemeRoot'
-import resolveManifestFile from './src/resolveManifestFile'
+import type Config from '@src/types/Config'
+import resolveInput from '@src/resolveInput'
+import output, { resolveOutDir } from '@src/resolveOutput'
+import resolveConfig from '@src/resolveConfig'
+import resolveThemeRoot from '@src/resolveThemeRoot'
+import resolveManifestFile from '@src/resolveManifestFile'
 
 export default function wordPressWolat(config: Config) {
 

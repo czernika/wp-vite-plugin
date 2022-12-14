@@ -1,4 +1,4 @@
-import Config from '../../types/Config'
+import Config from '@src/types/Config'
 
 /**
  * Determine if given config is object

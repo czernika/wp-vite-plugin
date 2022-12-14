@@ -1,5 +1,5 @@
-import Config from '../../types/Config'
-import configIsObject from './configIsObject'
+import Config from '@src/types/Config'
+import configIsObject from '@src/helpers/configIsObject'
 
 /**
  * Resolve config value by key or default value if none is present

@@ -1,5 +1,5 @@
-import Config from '../types/Config'
-import getConfigValue from './helpers/getConfigValueOrDefault'
+import Config from '@src/types/Config'
+import getConfigValue from '@src/helpers/getConfigValueOrDefault'
 
 /**
  * Default theme root path if no other was specified

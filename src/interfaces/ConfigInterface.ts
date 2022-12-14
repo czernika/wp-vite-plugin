@@ -1,4 +1,4 @@
-import EntryInterface from './EntryInterface'
+import EntryInterface from '@src/interfaces/EntryInterface'
 
 export default interface ConfigInterface {
 

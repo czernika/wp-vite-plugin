@@ -1,8 +1,8 @@
-import type Config from '../types/Config'
-import type Input from '../types/Input'
+import type Config from '@src/types/Config'
+import type Input from '@src/types/Input'
 import * as path from 'path'
-import ConfigInterface from '../interfaces/ConfigInterface'
-import { defaultThemeRootPath } from './resolveThemeRoot'
+import ConfigInterface from '@src/interfaces/ConfigInterface'
+import { defaultThemeRootPath } from '@src/resolveThemeRoot'
 
 const resolveInput = (config: Config): Input => {
     let themeRoot = defaultThemeRootPath
