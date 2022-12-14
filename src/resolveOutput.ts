@@ -1,4 +1,9 @@
 import { EmittedAsset, OutputOptions } from 'rollup'
+import ConfigInterface from '../interfaces/ConfigInterface'
+import Config from '../types/Config'
+import configIsObject from './helpers/configIsObject'
+import getConfigValue from './helpers/getConfigValueOrDefault'
+import resolveThemeRoot from './resolveThemeRoot'
 
 const output = {
     assetFileNames: (assetInfo: EmittedAsset): string => {
@@ -28,4 +33,22 @@ const output = {
 
 } as OutputOptions
 
+/**
+ * Resolve output directory name
+ * @default `dist`
+ */
+const resolveOutDir = (config: Config): string => {
+    const themeRoot = resolveThemeRoot(config)
+    const defaultOutDir = `${themeRoot}/dist`
+
+    if (configIsObject(config)) {
+        return (config as ConfigInterface)?.outDir ?
+            `${themeRoot}/${(config as ConfigInterface).outDir}` :
+            defaultOutDir
+    }
+
+    return defaultOutDir
+}
+
+export {resolveOutDir}
 export default output

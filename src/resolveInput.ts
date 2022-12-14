@@ -2,9 +2,10 @@ import type Config from '../types/Config'
 import type Input from '../types/Input'
 import * as path from 'path'
 import ConfigInterface from '../interfaces/ConfigInterface'
+import { defaultThemeRootPath } from './resolveThemeRoot'
 
 const resolveInput = (config: Config): Input => {
-    let themeRoot = 'web/app/themes/wolat'
+    let themeRoot = defaultThemeRootPath
     let input: Input = resolveNonObjectConfig(config, themeRoot)
 
     /**

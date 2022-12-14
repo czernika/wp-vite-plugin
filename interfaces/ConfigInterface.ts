@@ -13,4 +13,16 @@ export default interface ConfigInterface {
      * @default `web/app/themes/wolat`
      */
     theme?: string
+
+    /**
+     * Manifest file name
+     * @default true
+     */
+    manifest?: string | true
+
+    /**
+     * Output directory
+     * @default `dist`
+     */
+    outDir?: string
 }

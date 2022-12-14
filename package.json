@@ -1,13 +1,11 @@
 {
-  "name": "wolat-vite",
+  "name": "wordpress-wolat",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "vitest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "peerDependencies": {
     "vite": "^4.0.0"
   },
