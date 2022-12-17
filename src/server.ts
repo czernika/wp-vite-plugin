@@ -45,7 +45,7 @@ class Server {
     /**
      * Show Vite server page on server port
      */
-    protected showViteServerPage(page = 'server.html'): () => Connect.Server {
+    protected showViteServerPage(page = '../server.html'): () => Connect.Server {
         return () => this.server.middlewares.use((req, res, next) => {
             if (req.url === '/index.html') {
                 res.statusCode = 404
