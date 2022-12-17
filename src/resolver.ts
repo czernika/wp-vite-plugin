@@ -5,7 +5,7 @@ import ConfigInterface from '@src/interfaces/ConfigInterface'
 import EntryInterface from '@src/interfaces/EntryInterface'
 import type Config from '@src/types/Config'
 import type Input from '@src/types/Input'
-import { normalizePath, UserConfig } from 'vite'
+import { UserConfig } from 'vite'
 import { OutputOptions } from 'rollup'
 
 class Resolver {
@@ -149,7 +149,7 @@ class Resolver {
             this.setOutputDir((this.config as ConfigInterface).outDir as string)
         }
 
-        return normalizePath(`${this.getThemePath()}/${this.outDir}`)
+        return this.outDir
     }
 
     /**

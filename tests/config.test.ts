@@ -48,24 +48,24 @@ it('asserts config resolves output directory', () => {
 test.each([
     {
         config: 'resources/js/app.js',
-        outDir: 'web/app/themes/wolat/dist'
+        outDir: 'dist'
     },
     {
         config: ['resources/js/app.js'],
-        outDir: 'web/app/themes/wolat/dist'
+        outDir: 'dist'
     },
     {
         config: {
             input: 'resources/js/app.js'
         },
-        outDir: 'web/app/themes/wolat/dist'
+        outDir: 'dist'
     },
     {
         config: {
             input: 'resources/js/app.js',
             outDir: 'public'
         },
-        outDir: 'web/app/themes/wolat/public'
+        outDir: 'public'
     },
     {
         config: {
@@ -73,7 +73,7 @@ test.each([
             outDir: 'public',
             theme: 'wp-content/themes/my-theme'
         },
-        outDir: 'wp-content/themes/my-theme/public'
+        outDir: 'public'
     },
 ])('it asserts provided input resolved correctly output directory', ({config, outDir}) => {
     const resolver = new Resolver(config)

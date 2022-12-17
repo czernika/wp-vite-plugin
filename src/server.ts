@@ -13,7 +13,7 @@ class Server {
      * Get full path for hot file
      */
     public getHotFilePath(): string {
-        return path.resolve(this.resolver.getOutputDir(), this.resolver.getHotFileName())
+        return path.resolve(this.resolver.getThemePath(), this.resolver.getOutputDir(), this.resolver.getHotFileName())
     }
 
     /**

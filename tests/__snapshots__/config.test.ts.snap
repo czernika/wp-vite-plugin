@@ -5,7 +5,7 @@ exports[`asserts configs were merged 1`] = `
   "build": {
     "emptyOutDir": true,
     "manifest": "manifest.json",
-    "outDir": "web/app/themes/wolat/dist",
+    "outDir": "dist",
     "rollupOptions": {
       "input": "resources/app/js",
       "output": {
