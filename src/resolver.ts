@@ -218,7 +218,11 @@ class Resolver {
 
             server: {
                 strictPort: true,
-                port: 5173
+                port: 5173,
+
+                // TODO change these settings
+                https: false,
+                host: '127.0.0.1',
             },
 
             build: {
