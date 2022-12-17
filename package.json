@@ -10,7 +10,8 @@
   "license": "MIT",
   "scripts": {
     "test": "vitest",
-    "build": "tsc && tsc-alias"
+    "build": "tsc && tsc-alias",
+    "postinstall": "npm run build"
   },
   "keywords": [
     "vite-plugin",
