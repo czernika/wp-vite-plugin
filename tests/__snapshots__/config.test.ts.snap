@@ -17,6 +17,8 @@ exports[`asserts configs were merged 1`] = `
   },
   "root": "web/app/themes/wolat",
   "server": {
+    "host": "127.0.0.1",
+    "https": false,
     "port": 5173,
     "strictPort": true,
   },
