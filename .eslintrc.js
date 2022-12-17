@@ -35,5 +35,9 @@ module.exports = {
             'never'
         ],
         '@typescript-eslint/ban-ts-comment': 'off'
-    }
+    },
+    'exclude': [
+        'node_modules',
+        'dist',
+    ],
 }
