@@ -25,4 +25,10 @@ export default interface ConfigInterface {
      * @default `dist`
      */
     outDir?: string
+
+    /**
+     * Hot file name
+     * @default `hot`
+     */
+    hot?: string
 }

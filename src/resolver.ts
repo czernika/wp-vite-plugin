@@ -27,8 +27,31 @@ class Resolver {
      */
     manifest = 'manifest.json'
 
+    /**
+     * Hot file name
+     */
+    hot = 'hot'
+
     constructor (readonly config: Config) {
         // ...
+    }
+
+    /**
+     * Get hot file name
+     */
+    getHotFileName(): string {
+        if (configEntryExists(this.config, 'hot')) {
+            this.setHotFileName((this.config as ConfigInterface).hot as string)
+        }
+
+        return this.hot
+    }
+
+    /**
+     * Set hot file name
+     */
+    setHotFileName(hot: string): void {
+        this.hot = hot
     }
 
     /**
@@ -46,7 +69,6 @@ class Resolver {
          */
         if (configIsObject(this.config)) {
             const configInput = (this.config as ConfigInterface).input as EntryInterface
-            // themeRoot = config.theme ?? themeRoot
 
             /**
              * It still may contain simple string or an array
@@ -94,7 +116,9 @@ class Resolver {
         return input
     }
 
-
+    /**
+     * Resolve full path for input entry
+     */
     protected mapInput(entry: string): string {
         return path.resolve(this.getThemePath(), entry)
     }

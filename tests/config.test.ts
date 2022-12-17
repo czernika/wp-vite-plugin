@@ -133,3 +133,22 @@ test.each([
     const resolver = new Resolver(config)
     expect(resolver.getManifestFileName()).toStrictEqual(manifest)
 })
+
+test.each([
+    {
+        config: {
+            input: 'resources/js/app.js'
+        },
+        hot: 'hot'
+    },
+    {
+        config: {
+            input: 'resources/js/app.js',
+            hot: 'hot-file'
+        },
+        hot: 'hot-file'
+    },
+])('it asserts provided input resolved correctly manifest input', ({config, hot}) => {
+    const resolver = new Resolver(config)
+    expect(resolver.getHotFileName()).toStrictEqual(hot)
+})
