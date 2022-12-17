@@ -11,8 +11,8 @@ export default function wordPressWolat(config: Config): Plugin {
 
         config: (userConfig: UserConfig) => resolver.getResolvedConfig(userConfig),
 
-        configureServer (server: ViteDevServer) {
-            return new Server(resolver, server).configure()
-        }
+        // configureServer (server: ViteDevServer) {
+        //     return new Server(resolver, server).configure()
+        // }
     }
 }
