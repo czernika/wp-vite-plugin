@@ -8,9 +8,6 @@
         "outDir": "./dist",
         "baseUrl": "./",
         "skipLibCheck": true,
-        "lib": [
-            "ES2017"
-        ],
         "paths": {
             "@src/*": [
                 "./src/*"
