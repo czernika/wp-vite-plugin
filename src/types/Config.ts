@@ -1,4 +1,4 @@
-import ConfigInterface from '@src/interfaces/ConfigInterface'
+import ConfigInterface from '../interfaces/ConfigInterface'
 
 /**
  * Plugin configuration type

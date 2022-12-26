@@ -1,6 +1,6 @@
-import EntryInterface from '@src/interfaces/EntryInterface'
-import ConfigInterface from '@src/interfaces/ConfigInterface'
-import type Config from '@src/types/Config'
+import EntryInterface from '../interfaces/EntryInterface'
+import ConfigInterface from '../interfaces/ConfigInterface'
+import type Config from '../types/Config'
 
 /**
  * Determine if given config is object

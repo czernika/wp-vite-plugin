@@ -34,10 +34,9 @@ module.exports = {
             'error',
             'never'
         ],
-        '@typescript-eslint/ban-ts-comment': 'off'
-    },
-    'exclude': [
-        'node_modules',
-        'dist',
-    ],
+        '@typescript-eslint/ban-ts-comment': [
+            'error',
+            {'ts-ignore': 'allow-with-description'},
+        ],
+    }
 }

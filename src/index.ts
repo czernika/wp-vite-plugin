@@ -1,6 +1,6 @@
 import { Plugin, UserConfig, ViteDevServer } from 'vite'
-import type Config from '@src/types/Config'
-import Resolver from '@src/resolver'
+import type Config from './types/Config'
+import Resolver from './resolver'
 import Server from './server'
 
 export default function wordPressWolat(config: Config): Plugin {

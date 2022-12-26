@@ -1,10 +1,10 @@
 import * as path from 'path'
 import merge from 'merge'
-import { configEntryExists, configIsObject } from '@src/helpers/configIsObject'
-import ConfigInterface from '@src/interfaces/ConfigInterface'
-import EntryInterface from '@src/interfaces/EntryInterface'
-import type Config from '@src/types/Config'
-import type Input from '@src/types/Input'
+import { configEntryExists, configIsObject } from './helpers/configIsObject'
+import ConfigInterface from './interfaces/ConfigInterface'
+import EntryInterface from './interfaces/EntryInterface'
+import type Config from './types/Config'
+import type Input from './types/Input'
 import { UserConfig } from 'vite'
 import { OutputOptions } from 'rollup'
 
@@ -78,7 +78,7 @@ class Resolver {
             if (configIsObject(configInput)) {
                 Object.keys(configInput).forEach(key => {
 
-                    // @ts-ignore
+                    // @ts-ignore: Using dynamic keys as entrypoint
                     input[key] = this.mapInput(configInput[key])
                 })
             }

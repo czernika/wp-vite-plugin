@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "test": "vitest",
-    "build": "tsc && tsc-alias",
+    "build": "tsc",
     "postinstall": "npm run build"
   },
   "keywords": [
@@ -29,8 +29,7 @@
   },
   "dependencies": {
     "@types/node": "^18.11.16",
-    "merge": "^2.1.1",
-    "tsc-alias": "^1.8.2"
+    "merge": "^2.1.1"
   },
   "homepage": "https://github.com/czernika/wp-vite-plugin",
   "repository": {
