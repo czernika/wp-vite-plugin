@@ -1,6 +1,4 @@
-import EntryInterface from '../interfaces/EntryInterface'
-import ConfigInterface from '../interfaces/ConfigInterface'
-import type Config from '../types/Config'
+import { EntryInterface, ConfigInterface, Config } from '../wp-vite'
 
 /**
  * Determine if given config is object
