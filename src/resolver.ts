@@ -1,7 +1,7 @@
 import * as path from 'path'
 import merge from 'merge'
 import { configEntryExists, configIsObject } from './helpers/configIsObject'
-import { ConfigInterface, EntryInterface, Config, Input } from './wp-vite'
+import { ConfigInterface, EntryInterface, Config, Input } from '../wp-vite'
 import { UserConfig } from 'vite'
 import { OutputOptions } from 'rollup'
 

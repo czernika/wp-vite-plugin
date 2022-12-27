@@ -1,4 +1,4 @@
-import { EntryInterface, ConfigInterface, Config } from '../wp-vite'
+import { EntryInterface, ConfigInterface, Config } from '../../wp-vite'
 
 /**
  * Determine if given config is object
