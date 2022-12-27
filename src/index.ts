@@ -1,5 +1,5 @@
 import { Plugin, UserConfig, ViteDevServer } from 'vite'
-import type Config from './types/Config'
+import type { Config } from './wp-vite'
 import Resolver from './resolver'
 import Server from './server'
 

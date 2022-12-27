@@ -1,10 +1,7 @@
 import * as path from 'path'
 import merge from 'merge'
 import { configEntryExists, configIsObject } from './helpers/configIsObject'
-import ConfigInterface from './interfaces/ConfigInterface'
-import EntryInterface from './interfaces/EntryInterface'
-import type Config from './types/Config'
-import type Input from './types/Input'
+import { ConfigInterface, EntryInterface, Config, Input } from './wp-vite'
 import { UserConfig } from 'vite'
 import { OutputOptions } from 'rollup'
 
@@ -216,11 +213,11 @@ class Resolver {
         return {
             root: this.getThemePath(),
 
+            // These settings same as core Vite plugin options
+            // and may be overridden by it - see no point to create extra settings
             server: {
                 strictPort: true,
                 port: 5173,
-
-                // TODO change these settings
                 https: false,
                 host: '127.0.0.1',
             },

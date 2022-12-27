@@ -1,6 +1,17 @@
-import EntryInterface from './EntryInterface'
+/**
+ * Rollup input interface
+ *
+ * @example
+ * {'app': 'resources/js/app.js'}
+ */
+export interface EntryInterface {
+    [entryName: string]: string
+}
 
-export default interface ConfigInterface {
+/**
+ * Plugin configuration
+ */
+export interface ConfigInterface {
 
     /**
      * User input
@@ -32,3 +43,14 @@ export default interface ConfigInterface {
      */
     hot?: string
 }
+
+/**
+ * Plugin configuration type
+ * string (or an array of strings) - source file inputs
+ */
+export type Config = string | string[] | ConfigInterface
+
+/**
+* Rollup input
+*/
+export type Input = string | string[] | EntryInterface

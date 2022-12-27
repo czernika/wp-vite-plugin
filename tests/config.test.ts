@@ -1,6 +1,8 @@
 import { it, expect, vi, test } from 'vitest'
 import { UserConfig } from 'vite'
+import { OutputOptions } from 'rollup'
 import Resolver from '../src/resolver'
+import type { Config } from '../src/wp-vite'
 
 vi.mock('path', () => {
     return {
@@ -8,23 +10,17 @@ vi.mock('path', () => {
     }
 })
 
-// TODO refactor this test case
-it('asserts configs were merged', () => {
-    const pluginConfig: UserConfig = {
-        build: {
-            rollupOptions: {
-                input: 'resources/common/js',
-                output: {
-                    entryFileNames: 'js/[name].[hash].js',
-                }
-            }
-        }
+it('asserts configs were merged and user config overrides default one', () => {
+    const defaultConfig: Config = {
+        input: 'resources/js/common.js'
     }
 
-    const userConfig: UserConfig = {
+    const viteConfig: UserConfig = {
         build: {
             rollupOptions: {
-                input: 'resources/app/js',
+
+                // this input should override `common.js` input from provided vite config
+                input: 'resources/js/app.js',
                 output: {
                     chunkFileNames: 'js/chunks/[name].[hash].js',
                 }
@@ -32,9 +28,11 @@ it('asserts configs were merged', () => {
         }
     }
 
-    const resolved = new Resolver(pluginConfig).getResolvedConfig(userConfig)
+    const resolved = new Resolver(defaultConfig).getResolvedConfig(viteConfig)
+    const options = resolved.build?.rollupOptions
 
-    expect(resolved).toMatchSnapshot()
+    expect(options?.input).toBe('resources/js/app.js')
+    expect((options?.output as OutputOptions).chunkFileNames).toBe('js/chunks/[name].[hash].js')
 })
 
 it('asserts config resolves output directory', () => {
