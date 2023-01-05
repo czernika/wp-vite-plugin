@@ -8,7 +8,7 @@ const configIsObject = (config: Config | EntryInterface): boolean => (typeof con
 /**
  * Check if passed instance is object and its key exists
  */
-const configEntryExists = (config: Config, key: keyof ConfigInterface): boolean => {
+const configEntryExists = (config: Config, key: keyof ConfigInterface): config is ConfigInterface => {
     return (configIsObject(config) && typeof (config as ConfigInterface)[key] !== 'undefined')
 }
 

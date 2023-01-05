@@ -38,7 +38,7 @@ class Resolver {
      */
     getHotFileName(): string {
         if (configEntryExists(this.config, 'hot')) {
-            this.setHotFileName((this.config as ConfigInterface).hot as string)
+            this.setHotFileName(this.config.hot as string)
         }
 
         return this.hot
@@ -125,7 +125,7 @@ class Resolver {
      */
     getThemePath(): string {
         if (configEntryExists(this.config, 'theme')) {
-            this.setThemePath((this.config as ConfigInterface).theme as string)
+            this.setThemePath(this.config.theme as string)
         }
 
         return this.themeRoot
@@ -143,7 +143,7 @@ class Resolver {
      */
     getOutputDir(): string {
         if (configEntryExists(this.config, 'outDir')) {
-            this.setOutputDir((this.config as ConfigInterface).outDir as string)
+            this.setOutputDir(this.config.outDir as string)
         }
 
         return this.outDir
@@ -193,7 +193,7 @@ class Resolver {
      */
     getManifestFileName(): string {
         if (configEntryExists(this.config, 'manifest')) {
-            this.setManifestFileName((this.config as ConfigInterface).manifest as string)
+            this.setManifestFileName(this.config.manifest as string)
         }
 
         return this.manifest
