@@ -40,9 +40,9 @@ export default defineConfig({
 Other plugin settings:
 
 | Setting | Meaning | Type | Default |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | `theme` | Project root. In WordPress terms where all theme resources are located | `string` | None. **Required** |
-| `input` | User input. List of required resources related to `theme` path | `string | string[] | EntryInterface` | None. **Required** |
+| `input` | User input. List of required resources related to `theme` path | `string \| string[] \| EntryInterface` | None. **Required** |
 | `manifest` | Generated manifest file name | `string` | `manifest.json` |
 | `outDir` | Where all generated file should be placed | `string` | `dist` |
 | `hot` | Hot file name - special file which resolves environment type | `string` | `hot` |
@@ -122,11 +122,6 @@ Add these lines into entrypoint file
 // https://vitejs.dev/guide/backend-integration.html#backend-integration
 import 'vite/modulepreload-polyfill'
 ```
-
-## TODO
-
-- [ ] - Add live reload plugin and settings
-- [ ] - Add real app url hint into server HTML
 
 ## License
 

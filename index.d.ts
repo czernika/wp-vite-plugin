@@ -1,3 +1,5 @@
+import { Config as LiveReloadConfig } from 'vite-plugin-live-reload'
+
 /**
  * Rollup input interface
  *
@@ -6,6 +8,11 @@
  */
 export interface EntryInterface {
     [entryName: string]: string
+}
+
+export interface LiveReloadConfigInterface {
+    paths: string | string[]
+    config?: LiveReloadConfig
 }
 
 /**
@@ -41,6 +48,11 @@ export interface ConfigInterface {
      * @default `hot`
      */
     hot?: string
+
+    /**
+     * Reload options
+     */
+    reload?: string | string[] | LiveReloadConfigInterface
 }
 
 /**

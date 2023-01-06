@@ -30,7 +30,8 @@
   },
   "dependencies": {
     "@types/node": "^18.11.16",
-    "merge": "^2.1.1"
+    "merge": "^2.1.1",
+    "vite-plugin-live-reload": "^3.0.1"
   },
   "homepage": "https://github.com/czernika/wp-vite-plugin",
   "repository": {

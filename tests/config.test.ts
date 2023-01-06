@@ -155,3 +155,40 @@ test.each([
     const resolver = new Resolver(config)
     expect(resolver.getHotFileName()).toStrictEqual(hot)
 })
+
+test.each([
+    {
+        config: {
+            input: 'resources/js/app.js',
+            theme: 'web/app/themes/wolat',
+            reload: './file/to/reload'
+        },
+        reloadPaths: './file/to/reload',
+        reloadConfig: undefined,
+    },
+    {
+        config: {
+            input: 'resources/js/app.js',
+            theme: 'web/app/themes/wolat',
+            reload: ['./file/to/reload', './another-file']
+        },
+        reloadPaths: ['./file/to/reload', './another-file'],
+        reloadConfig: undefined,
+    },
+    {
+        config: {
+            input: 'resources/js/app.js',
+            theme: 'web/app/themes/wolat',
+            reload: {
+                paths: './file/to/reload',
+                config: { alwaysReload: true }
+            }
+        },
+        reloadPaths: './file/to/reload',
+        reloadConfig: { alwaysReload: true },
+    },
+])('it asserts provided input resolved correctly manifest input', ({config, reloadPaths, reloadConfig}) => {
+    const resolver = new Resolver(config)
+    expect(resolver.getReloadConfig()).toStrictEqual(reloadConfig)
+    expect(resolver.getReloadConfigPaths()).toStrictEqual(reloadPaths)
+})

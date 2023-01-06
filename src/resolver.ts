@@ -4,6 +4,7 @@ import { configEntryExists, configIsObject } from './helpers/configIsObject'
 import { ConfigInterface, EntryInterface, Config, Input } from '../index'
 import { UserConfig } from 'vite'
 import { OutputOptions } from 'rollup'
+import { Config as LiveReloadConfig } from 'vite-plugin-live-reload'
 
 class Resolver {
 
@@ -23,8 +24,51 @@ class Resolver {
      */
     hot = 'hot'
 
+    /**
+     * Default reload file patterns
+     */
+    reloadPaths = ['./index.php']
+
     constructor (readonly config: Config) {
         // ...
+    }
+
+    /**
+     * Get live reload plugin config
+     */
+    getReloadConfig(): LiveReloadConfig | undefined {
+        if (configEntryExists(this.config, 'reload')) {
+            const reloadConfig = this.config.reload
+
+            if (typeof reloadConfig === 'object' && !Array.isArray(reloadConfig)) {
+                return reloadConfig.config
+            }
+        }
+
+        return undefined
+    }
+
+    /**
+     * Get live reload plugin config paths
+     */
+    getReloadConfigPaths(): string | string[] {
+        if (configEntryExists(this.config, 'reload')) {
+            const reloadConfig = this.config.reload
+
+            if (typeof reloadConfig === 'string') {
+                return reloadConfig
+            }
+
+            if (Array.isArray(reloadConfig)) {
+                return reloadConfig
+            }
+
+            if (typeof reloadConfig === 'object' && !Array.isArray(reloadConfig)) {
+                return reloadConfig.paths
+            }
+        }
+
+        return this.reloadPaths
     }
 
     /**
