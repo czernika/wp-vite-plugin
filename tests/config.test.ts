@@ -187,6 +187,15 @@ test.each([
         reloadPaths: './file/to/reload',
         reloadConfig: { alwaysReload: true },
     },
+    {
+        config: {
+            input: 'resources/js/app.js',
+            theme: 'web/app/themes/wolat',
+            reload: undefined
+        },
+        reloadPaths: ['./index.php'],
+        reloadConfig: undefined,
+    },
 ])('it asserts provided input resolved correctly manifest input', ({config, reloadPaths, reloadConfig}) => {
     const resolver = new Resolver(config)
     expect(resolver.getReloadConfig()).toStrictEqual(reloadConfig)
