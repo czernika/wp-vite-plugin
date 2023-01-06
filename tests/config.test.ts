@@ -2,7 +2,7 @@ import { it, expect, vi, test } from 'vitest'
 import { UserConfig } from 'vite'
 import { OutputOptions } from 'rollup'
 import Resolver from '../src/resolver'
-import type { Config } from '../src/wp-vite'
+import type { Config } from '../index'
 
 vi.mock('path', () => {
     return {
@@ -12,7 +12,8 @@ vi.mock('path', () => {
 
 it('asserts configs were merged and user config overrides default one', () => {
     const defaultConfig: Config = {
-        input: 'resources/js/common.js'
+        input: 'resources/js/common.js',
+        theme: 'web/app/themes/wolat',
     }
 
     const viteConfig: UserConfig = {
@@ -45,22 +46,23 @@ it('asserts config resolves output directory', () => {
 
 test.each([
     {
-        config: 'resources/js/app.js',
-        outDir: 'dist'
-    },
-    {
-        config: ['resources/js/app.js'],
+        config: {
+            input: 'resources/js/common.js',
+            theme: 'web/app/themes/wolat',
+        },
         outDir: 'dist'
     },
     {
         config: {
-            input: 'resources/js/app.js'
+            input: ['resources/js/app.js'],
+            theme: 'web/app/themes/wolat',
         },
         outDir: 'dist'
     },
     {
         config: {
             input: 'resources/js/app.js',
+            theme: 'web/app/themes/wolat',
             outDir: 'public'
         },
         outDir: 'public'
@@ -80,16 +82,16 @@ test.each([
 
 test.each([
     {
-        config: 'resources/js/app.js',
-        root: 'web/app/themes/wolat'
-    },
-    {
-        config: ['resources/js/app.js'],
+        config: {
+            input: 'resources/js/app.js',
+            theme: 'web/app/themes/wolat',
+        },
         root: 'web/app/themes/wolat'
     },
     {
         config: {
-            input: 'resources/js/app.js'
+            input: ['resources/js/app.js'],
+            theme: 'web/app/themes/wolat',
         },
         root: 'web/app/themes/wolat'
     },
@@ -107,22 +109,23 @@ test.each([
 
 test.each([
     {
-        config: 'resources/js/app.js',
-        manifest: 'manifest.json'
-    },
-    {
-        config: ['resources/js/app.js'],
+        config: {
+            input: 'resources/js/app.js',
+            theme: 'web/app/themes/wolat',
+        },
         manifest: 'manifest.json'
     },
     {
         config: {
-            input: 'resources/js/app.js'
+            input: ['resources/js/app.js'],
+            theme: 'web/app/themes/wolat',
         },
         manifest: 'manifest.json'
     },
     {
         config: {
             input: 'resources/js/app.js',
+            theme: 'web/app/themes/wolat',
             manifest: 'assets.json'
         },
         manifest: 'assets.json'
@@ -135,13 +138,15 @@ test.each([
 test.each([
     {
         config: {
-            input: 'resources/js/app.js'
+            input: 'resources/js/app.js',
+            theme: 'web/app/themes/wolat',
         },
         hot: 'hot'
     },
     {
         config: {
             input: 'resources/js/app.js',
+            theme: 'web/app/themes/wolat',
             hot: 'hot-file'
         },
         hot: 'hot-file'

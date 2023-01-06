@@ -1,17 +1,11 @@
 import * as path from 'path'
 import merge from 'merge'
 import { configEntryExists, configIsObject } from './helpers/configIsObject'
-import { ConfigInterface, EntryInterface, Config, Input } from '../wp-vite'
+import { ConfigInterface, EntryInterface, Config, Input } from '../index'
 import { UserConfig } from 'vite'
 import { OutputOptions } from 'rollup'
 
 class Resolver {
-
-    /**
-     * Default theme root path
-     * Basically root for Vite and every entrypoint
-     */
-    themeRoot = 'web/app/themes/wolat'
 
     /**
      * Output directory name
@@ -55,30 +49,21 @@ class Resolver {
      * Get Rollup inputs
      */
     getInput(): Input {
-        let input = this.getNonObjectInput(this.config)
+        let input: Input = {}
+
+        const configInput = (this.config as ConfigInterface).input as EntryInterface
 
         /**
-         * User passed input Config object
-         *
-         * @example
-         * wolat({input: {app: 'resources/js/app.js'}})
-         * wolat({input: 'resources/js/app.js'})
+         * It still may contain simple string or an array
          */
-        if (configIsObject(this.config)) {
-            const configInput = (this.config as ConfigInterface).input as EntryInterface
+        input = this.getNonObjectInput(configInput)
 
-            /**
-             * It still may contain simple string or an array
-             */
-            input = this.getNonObjectInput(configInput)
+        if (configIsObject(configInput)) {
+            Object.keys(configInput).forEach(key => {
 
-            if (configIsObject(configInput)) {
-                Object.keys(configInput).forEach(key => {
-
-                    // @ts-ignore: Using dynamic keys as entrypoint
-                    input[key] = this.mapInput(configInput[key])
-                })
-            }
+                // @ts-ignore: Using dynamic keys as entrypoint
+                input[key] = this.mapInput(configInput[key])
+            })
         }
 
         return input
@@ -124,18 +109,7 @@ class Resolver {
      * Get theme root path where all resources are located
      */
     getThemePath(): string {
-        if (configEntryExists(this.config, 'theme')) {
-            this.setThemePath(this.config.theme as string)
-        }
-
-        return this.themeRoot
-    }
-
-    /**
-     * Set theme root path
-     */
-    setThemePath(themeRoot: string): void {
-        this.themeRoot = themeRoot
+        return this.config.theme
     }
 
     /**

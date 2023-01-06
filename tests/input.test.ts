@@ -9,11 +9,17 @@ vi.mock('path', () => {
 
 test.each([
     {
-        config: 'resources/js/app.js',
+        config: {
+            input: 'resources/js/app.js',
+            theme: 'web/app/themes/wolat',
+        },
         input: '/path/to/web/app/themes/wolat/resources/js/app.js'
     },
     {
-        config: ['resources/js/app.js', 'resources/css/app.css'],
+        config: {
+            input: ['resources/js/app.js', 'resources/css/app.css'],
+            theme: 'web/app/themes/wolat',
+        },
         input: [
             '/path/to/web/app/themes/wolat/resources/js/app.js',
             '/path/to/web/app/themes/wolat/resources/css/app.css',
@@ -23,23 +29,12 @@ test.each([
         config: {
             input: {
                 some: 'resources/js/app.js'
-            }
+            },
+            theme: 'web/app/themes/wolat',
         },
         input: {
             some: '/path/to/web/app/themes/wolat/resources/js/app.js',
         }
-    },
-    {
-        config: {
-            input: 'resources/js/app.js'
-        },
-        input: '/path/to/web/app/themes/wolat/resources/js/app.js',
-    },
-    {
-        config: {
-            input: ['resources/js/app.js']
-        },
-        input: ['/path/to/web/app/themes/wolat/resources/js/app.js'],
     },
 ])('it asserts provided input resolved correctly into rollup input', ({config, input}) => {
     const resolver = new Resolver(config)
