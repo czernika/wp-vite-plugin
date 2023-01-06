@@ -141,7 +141,7 @@ class Resolver {
                 /**
                  * Images
                  */
-                if (/png|jpe?g|gif|tiff|bmp|ico/i.test(extension)) {
+                if (/png|jpe?g|gif|tiff|bmp|webp|ico/i.test(extension)) {
                     extension = 'images'
                 }
 
