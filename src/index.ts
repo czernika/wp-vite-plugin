@@ -1,11 +1,11 @@
 import { Plugin, UserConfig, ViteDevServer } from 'vite'
-import type { Config } from '../index'
+import { ConfigInterface } from '../index'
 import Resolver from './resolver'
 import Server from './server'
 
 import { liveReload } from 'vite-plugin-live-reload'
 
-export default function wordPressWolat(config: Config): Plugin[] {
+export default function wordPressWolat(config: ConfigInterface): Plugin[] {
     const resolver = new Resolver(config)
 
     return [

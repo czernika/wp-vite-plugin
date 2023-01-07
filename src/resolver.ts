@@ -1,7 +1,7 @@
 import * as path from 'path'
 import merge from 'merge'
 import { configEntryExists, configIsObject } from './helpers/configIsObject'
-import { ConfigInterface, EntryInterface, Config, Input } from '../index'
+import { ConfigInterface, EntryInterface, Input } from '../index'
 import { UserConfig } from 'vite'
 import { OutputOptions } from 'rollup'
 import { Config as LiveReloadConfig } from 'vite-plugin-live-reload'
@@ -34,7 +34,7 @@ class Resolver {
      */
     reloadPaths = ['./index.php']
 
-    constructor (readonly config: Config) {
+    constructor (readonly config: ConfigInterface) {
         // ...
     }
 
@@ -121,7 +121,7 @@ class Resolver {
     /**
      * Map input if it is not object
      */
-    protected getNonObjectInput(config: Config | EntryInterface): Input {
+    protected getNonObjectInput(config: ConfigInterface | EntryInterface): Input {
         let input: Input = {}
 
         /**

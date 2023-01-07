@@ -57,11 +57,10 @@ export interface ConfigInterface {
 }
 
 /**
- * Plugin configuration type
- */
-export type Config = ConfigInterface
-
-/**
 * Rollup input
 */
 export type Input = string | string[] | EntryInterface
+
+declare const wordPressWolat: (config: ConfigInterface) => Plugin[]
+
+export default wordPressWolat

@@ -2,7 +2,7 @@ import { it, expect, vi, test } from 'vitest'
 import { UserConfig } from 'vite'
 import { OutputOptions } from 'rollup'
 import Resolver from '../src/resolver'
-import type { Config } from '../index'
+import { ConfigInterface } from '../index'
 
 vi.mock('path', () => {
     return {
@@ -11,7 +11,7 @@ vi.mock('path', () => {
 })
 
 it('asserts configs were merged and user config overrides default one', () => {
-    const defaultConfig: Config = {
+    const defaultConfig: ConfigInterface = {
         input: 'resources/js/common.js',
         theme: 'web/app/themes/wolat',
     }
