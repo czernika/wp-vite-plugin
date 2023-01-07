@@ -25,6 +25,11 @@ class Resolver {
     hot = 'hot'
 
     /**
+     * Server host name
+     */
+    host = '127.0.0.1'
+
+    /**
      * Default reload file patterns
      */
     reloadPaths = ['./index.php']
@@ -237,7 +242,11 @@ class Resolver {
                 strictPort: true,
                 port: 5173,
                 https: false,
-                host: '127.0.0.1',
+                host: this.host,
+
+                hmr: {
+                    host: this.host
+                }
             },
 
             build: {

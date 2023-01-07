@@ -127,7 +127,10 @@ Add these lines into entrypoint file
 
 ```js
 // https://vitejs.dev/guide/backend-integration.html#backend-integration
-import 'vite/modulepreload-polyfill'
+import 'vite/modulepreload-polyfill' 
+
+// If no hot reload happening
+// import.meta.hot 
 ```
 
 ## License
