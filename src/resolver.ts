@@ -30,6 +30,11 @@ class Resolver {
     host = '127.0.0.1'
 
     /**
+     * Port value
+     */
+    port = 5173
+
+    /**
      * Default reload file patterns
      */
     reloadPaths = ['./index.php']
@@ -230,6 +235,34 @@ class Resolver {
     }
 
     /**
+     * Get host name
+     */
+    getHostName(): string {
+        return this.host
+    }
+
+    /**
+     * Set host name
+     */
+    setHostName(host: string): void {
+        this.host = host
+    }
+
+    /**
+     * Get port
+     */
+    getPort(): number {
+        return this.port
+    }
+
+    /**
+     * Set port
+     */
+    setPort(port: number): void {
+        this.port = port
+    }
+
+    /**
      * Get default plugin configuration
      */
     getPluginConfig(): UserConfig {
@@ -240,13 +273,8 @@ class Resolver {
             // and may be overridden by it - see no point to create extra settings
             server: {
                 strictPort: true,
-                port: 5173,
-                https: false,
-                host: this.host,
-
-                hmr: {
-                    host: this.host
-                }
+                port: this.getPort(),
+                host: this.getHostName(),
             },
 
             build: {

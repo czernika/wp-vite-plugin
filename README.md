@@ -8,11 +8,11 @@ Vite Plugin for WordPress environment. Works in pair with [Vite Assets Loader](h
 
 > In progress
 
-For now may be resolved as `package.json` dependency - change `[VERSION]` key word with latest release tag
+For now may be resolved as `package.json` dependency from master branch
 
 ```json
 {
-    "wordpress-wolat": "git+ssh://git@github.com:czernika/wp-vite-plugin.git#[VERSION]"
+    "wordpress-wolat": "git+ssh://git@github.com:czernika/wp-vite-plugin.git#master"
 }
 ```
 
@@ -113,7 +113,25 @@ Despite plugin requires `common.js` file `app.js` will be used as Vite config ha
 
 ### Server settings
 
-Default server host is `127.0.0.1` and port is `5173`. If you wish to override this, provide Vite server configuration
+Default server host is `127.0.0.1` (both server and HMR) and port is `5173`. If you wish to override this, provide Vite server configuration
+
+```js
+export default defineConfig({
+    server: {
+        host: 'some.host',
+        port: 5555,
+    },
+
+	plugins: [
+		wordPressWolat({
+            theme: 'web/app/themes/my-theme',
+            input: 'resources/js/common.js',
+        }),
+	],
+})
+```
+
+> This feature is under testing and may be changed
 
 ### Output
 
@@ -129,9 +147,19 @@ Add these lines into entrypoint file
 // https://vitejs.dev/guide/backend-integration.html#backend-integration
 import 'vite/modulepreload-polyfill' 
 
-// If no hot reload happening
+// [BUG?] If no hot reload happening try to add
 // import.meta.hot 
 ```
+
+## Known issues
+
+- Full page reload will not happen unless you import CSS file within JS-entrypoint or add `import.meta.hot` line into it
+
+## TODO
+
+- [ ] - Add API for server settings
+- [ ] - Add API for chunking strategy
+- [ ] - Test HMR more
 
 ## License
 
