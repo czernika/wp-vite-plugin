@@ -1,6 +1,6 @@
 {
-  "name": "wordpress-wolat",
-  "version": "1.0.0",
+  "name": "wordpress-vite",
+  "version": "0.1.0",
   "description": "Vite plugin for WordPress application",
   "main": "./dist/index.js",
   "author": {
@@ -14,6 +14,7 @@
     "postinstall": "npm run build"
   },
   "keywords": [
+    "vite",
     "vite-plugin",
     "wordpress"
   ],

@@ -46,6 +46,7 @@ Other plugin settings:
 | `manifest` | Generated manifest file name | `string` | `manifest.json` |
 | `outDir` | Where all generated file should be placed | `string` | `dist` |
 | `hot` | Hot file name - special file which resolves environment type | `string` | `hot` |
+| `reload` | List of file patterns which will cause page reloading if changed | `string \| string[] \| LiveReloadConfigInterface` | `[./index.php]` |
 
 ```ts
 interface ConfigInterface {
@@ -78,6 +79,12 @@ interface ConfigInterface {
      * @default `hot`
      */
     hot?: string
+
+    /**
+     * Reload options
+     * @see https://github.com/arnoson/vite-plugin-live-reload
+     */
+    reload?: string | string[] | LiveReloadConfigInterface
 }
 ```
 

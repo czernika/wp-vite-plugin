@@ -51,6 +51,7 @@ export interface ConfigInterface {
 
     /**
      * Reload options
+     * @see https://github.com/arnoson/vite-plugin-live-reload
      */
     reload?: string | string[] | LiveReloadConfigInterface
 }
